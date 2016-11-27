@@ -1,0 +1,14 @@
+{
+  "name": "cnorton-webdev/easy-mailinator",
+  "description": "PHP wrapper library for Mailinator.com API",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.2.1"
+  },
+  "authors": [
+    {
+      "name": "Christopher Norton",
+      "email": "norton.christopher@outlook.com"
+    }
+  ]
+}
