@@ -25,7 +25,7 @@ $name = 'some_name_here';
 
 $messages = $mail->inbox($name);
 
-// Show message count - MUST be called AFTER getting messages
+// Show message count - MUST be called AFTER getting messages otherwise will return 0
 
 $message_count = $mail->get_mail_count();
 
@@ -37,11 +37,11 @@ $message = $mail->get($msg_id);
 
 $is_deleted = $mail->delete($msg_id);
 
-// Retrieve save messages
+// Retrieve saved messages
 
-$saved_message = $mail->saved();
+$saved_messages = $mail->saved();
 
-// Get saved messages count
+// Get saved messages count - MUST be called AFTER getting messages otherwise will return 0
 
 $saved_count = $mail->get_saved_count();
 ```
