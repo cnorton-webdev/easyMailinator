@@ -81,7 +81,7 @@ class easy_mailinator
 
 	/**
 	 * Returns the saved inbox emails as a json array object
-	 * @return array
+	 * @return object
 	 */
 	public function saved()
 	{
@@ -89,15 +89,15 @@ class easy_mailinator
 			'token' => $this->token,
 			'private_domain' => $this->private_domain
 		));
-		$emails = $this->web('inbox?', $params);
-		if (!is_array($emails)) throw new Exception('Error parsing data returned from Mailinator.');
+		$emails = json_decode($this->web('inbox?', $params));
+		if (!is_object($emails)) throw new Exception('Error parsing data returned from Mailinator.');
 		$this->saved_mail_count = count($emails);
 		return $emails;
 	}
 
 	/**
 	 * Returns the private domain inbox emails as a json array object
-	 * @return array
+	 * @return object
 	 */
 	public function private_domain()
 	{
@@ -107,8 +107,8 @@ class easy_mailinator
 				'token' => $this->token,
 				'private_domain' => $this->private_domain
 			));
-			$emails = $this->web('inbox?', $params);
-			if (!is_array($emails)) throw new Exception('Error parsing data returned from Mailinator.');
+			$emails = json_decode($this->web('inbox?', $params));
+			if (!is_object($emails)) throw new Exception('Error parsing data returned from Mailinator.');
 			$this->private_mail_count = count($emails);
 			return $emails;
 		}
@@ -117,7 +117,7 @@ class easy_mailinator
 	/**
 	 * Returns the emails for the specified email name as a json array object
 	 * @param  string $email Name of email box to check
-	 * @return array
+	 * @return object
 	 */
 	public function inbox($email)
 	{
@@ -126,8 +126,8 @@ class easy_mailinator
 			'token' => $this->token,
 			'private_domain' => $this->private_domain
 		));
-		$emails = $this->web('inbox?', $params);
-		if (!is_array($emails)) throw new Exception('Error parsing data returned from Mailinator.');
+		$emails = json_decode($this->web('inbox?', $params));
+		if (!is_object($emails)) throw new Exception('Error parsing data returned from Mailinator.');
 		$this->mail_count = count($emails);
 		return $emails;
 	}
@@ -135,6 +135,7 @@ class easy_mailinator
 	/**
 	 * Returns the specified email message
 	 * @param string $msgID
+	 * @return object
 	 */
 	public function get($msg_id)
 	{
@@ -143,9 +144,9 @@ class easy_mailinator
 			'token' => $this->token,
 			'private_domain' => $this->private_domain
 		));
-		$email = $this->web('email?', $params);
-		if (!is_array($email)) throw new Exception('Error parsing data returned from Mailinator.');
-		echo $email;
+		$email = json_decode($this->web('email?', $params));
+		if (!is_object($email)) throw new Exception('Error parsing data returned from Mailinator.');
+		return $email;
 	}
 
 	/**
@@ -161,7 +162,7 @@ class easy_mailinator
 			'private_domain' => $this->private_domain
 		));
 		$status = json_decode($this->web('delete?', $params));
-		if (!is_array($status)) throw new Exception('Error parsing data returned from Mailinator.');
+		if (!is_object($status)) throw new Exception('Error parsing data returned from Mailinator.');
 		if ($status->status == 'ok')
 		{
 			return true;
