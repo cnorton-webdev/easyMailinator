@@ -5,7 +5,7 @@
 PHP wrapper library for the Mailinator API
 
 ## API Token
-To obtain an API token for Mailinator, you must first create a [Mailinator](http://www.mailinator.com) account, login, and find your token at [https://www.mailinator.com/settings.jsp](https://www.mailinator.com/settings.jsp)
+To obtain an API token for Mailinator, you must first create a [Mailinator](http://www.mailinator.com) account. API access then can be obtained buy purchasing an upgrade plan [here](https://www.mailinator.com/featurematrix.jsp) and then obtain your API token at [https://www.mailinator.com/settings.jsp](https://www.mailinator.com/settings.jsp)
 
 ## Requirements
 In order to use this, you must have the [cURL](http://php.net/manual/en/book.curl.php) extension installed on your server. [PHP](http://www.php.net) 5.5 or higher recommended.
